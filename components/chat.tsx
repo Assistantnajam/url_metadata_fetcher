@@ -131,7 +131,7 @@ export function Chat() {
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Paste a link or ask about a webpage\u2026"
+          placeholder="Paste a link or ask about a webpage…"
           disabled={isBusy}
           className="flex-1 rounded-lg border border-slate-line bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-slate-soft/70 focus:outline-none focus:ring-2 focus:ring-signal-teal/40"
         />
@@ -140,7 +140,7 @@ export function Chat() {
           disabled={isBusy || !input.trim()}
           className="rounded-lg bg-ink px-4 py-2.5 text-sm font-medium text-paper transition-opacity disabled:opacity-40"
         >
-          {isBusy ? "Working\u2026" : "Send"}
+          {isBusy ? "Working…" : "Send"}
         </button>
       </form>
     </div>

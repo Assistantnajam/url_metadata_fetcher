@@ -8,7 +8,7 @@ import type { FetchPageMetadataOutput } from "@/lib/tools/fetch-page-metadata";
 
 export function Chat() {
   const [input, setInput] = useState("");
-  const { messages, sendMessage, status } = useChat({
+  const { messages, sendMessage, status, error, regenerate } = useChat({
     transport: new DefaultChatTransport({ api: "/api/chat" }),
   });
 
@@ -110,6 +110,22 @@ export function Chat() {
           </div>
         ))}
       </div>
+
+      {error ? (
+        <div className="mb-3 flex items-center justify-between gap-3 rounded-lg border border-signal-amber/30 bg-signal-amber/5 px-4 py-3">
+          <p className="text-sm text-ink">
+            Something went wrong sending that message. This can happen if the AI
+            service is busy, rate-limited, or unreachable.
+          </p>
+          <button
+            type="button"
+            onClick={() => regenerate()}
+            className="shrink-0 rounded-md bg-ink px-3 py-1.5 text-xs font-medium text-paper"
+          >
+            Retry
+          </button>
+        </div>
+      ) : null}
 
       <form onSubmit={handleSubmit} className="flex gap-2 border-t border-slate-line pt-4">
         <input
